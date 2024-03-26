@@ -28,7 +28,7 @@ const BottomButtons = ({handleFullScreenCapture, type , setType, onStartCapture,
   
 
   return (
-    <div className='bada'>
+    <div className='BottomBtnContainer'>
       {type === "shotType" &&
         <div className='BottomButtons'>            
           <div onClick={handleCustomCapture} className="btn-texts">Custom Area</div>

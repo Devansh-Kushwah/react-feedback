@@ -1,6 +1,6 @@
 
 
-.bada{
+.BottomBtnContainer{
   position: fixed;
   bottom: 5%;
   width: 100%;
@@ -57,7 +57,7 @@
   background-color: transparent !important;
   /* box-shadow: none !important; */
   
-  .css-1t1j96h-MuiPaper-root-MuiDialog-paper{
+  .MuiPaper-root {
     max-width: none !important;
     max-height: none !important;
     background-color: transparent !important;

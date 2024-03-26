@@ -2,13 +2,12 @@
   /* width: 1400px; */
   width: 90%;
   margin: 16px auto !important;
-  .css-1t1j96h-MuiPaper-root-MuiDialog-paper{
+
+  .MuiPaper-root{
     width: 90% !important;
     height: 100% !important;
     max-width: none !important;
     max-height: none !important;
-  }
-  .css-ypiqx9-MuiDialogContent-root{
     padding: 0px;
   }
 }
