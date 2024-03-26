@@ -10,6 +10,9 @@
     max-height: none !important;
     padding: 0px;
   }
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 }
 
 .CanvaMain{
@@ -19,6 +22,10 @@
   /* gap: 50px; */
   height: 100%;
   justify-content: space-evenly;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 20px;
+  }
 }
 
 .canvaArea{
@@ -30,6 +37,11 @@
   flex-direction: column;
   padding: 20px 0;
   background-color: rgba(227, 223, 223, 0.666);
+  @media (max-width: 768px) {
+    margin-top: 580px;
+    width: 100%;
+    gap: 8px;
+  }
 
   .transform-component-module_wrapper__SPB86{
     width: 90% !important; 
@@ -55,6 +67,11 @@
     cursor: pointer;
     width: 150px;
   }
+  @media (max-width: 768px) {
+    width: 100%;
+    box-shadow: none;
+    padding-bottom: 20px;
+  }
 }
 
 .toolbox{
@@ -67,6 +84,12 @@
   justify-content: center;
   gap:8px;
   padding: 8px 16px;
+  @media (max-width: 768px) {
+    margin: 0;
+    gap: 4px;
+    padding: 4px 8px;
+  }
+
 }
 
 .tools{
@@ -77,4 +100,25 @@
   border-radius: 8px;
   color: white;
   cursor: pointer;
+  @media (max-width: 768px) {
+    width: 20px !important;
+    height: 20px !important;
+  }
+  @media (max-width: 360px){
+    width: 15px !important;
+    height: 15px !important;
+  }
+
+}
+
+
+
+.IssueGroup{
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 4px;
+  }
+  .issueBtn{
+    font-size: 12px;
+  }
 }

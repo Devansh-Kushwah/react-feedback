@@ -18,14 +18,20 @@ import UndoIcon from '@mui/icons-material/Undo';
 import RedoIcon from '@mui/icons-material/Redo';
 import eraserIcon from "../../images/eraser.png";
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
+import { Cookie } from '@mui/icons-material';
 const CanvasEditor = ({handleSave, screenCapture, openCanvaModal, setCanvaOpenModal, setFormSubmit }) => {
   const canvasRef = useRef(null);
   const [tool, setTool] = useState('pencil'); // Current tool: pencil or eraser
   const [panningDisabled, setPanningDisabled] = useState(false);
-  const [alignment, setAlignment] = React.useState('Enhancements');
+  const [issueType, setIssueType] = useState('Bugs');
+  const [impact, setImpact] = useState('');
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [section, setSection] = useState('low');
+  const [subSection, setSubSection] = useState('low');
 
   const handleChange = (event, newAlignment) => {
-    setAlignment(newAlignment);
+    setIssueType(newAlignment);
   };
   
 
@@ -75,23 +81,21 @@ const CanvasEditor = ({handleSave, screenCapture, openCanvaModal, setCanvaOpenMo
   ]
 
   const handleSubmit = async () => {
-
     let dataURL;
     if (canvasRef.current) { 
       dataURL  = await canvasRef.current.exportImage();
       handleSave(dataURL);
     }
-  
-    const issueType = document.getElementById('issueType').value;
-    const impact = document.getElementById('impact').value;
-    const title = document.getElementById('title').value;
-    const description = document.getElementById('description').value;
-    const section = document.getElementById('section').value;
-    const subSection = document.getElementById('subSection').value;
-  
-    const body = `Issue Type: ${issueType}\nImpact: ${impact}\nTitle: ${title}\nDescription: ${description}\nSection: ${section}\nSub Section: ${subSection}\nImage: ${dataURL}`;
-  
-    window.open(`mailto:devanshkushwah222@gmail.com?subject=Form Submission&body=${encodeURIComponent(body)}`);  
+    const formData = {
+      issueType,
+      impact,
+      title,
+      description,
+      section,
+      subSection,
+      image: dataURL, 
+    };
+    console.log("FormData:", formData);
     setCanvaOpenModal(false);
     setFormSubmit(true);
   };
@@ -132,7 +136,7 @@ const CanvasEditor = ({handleSave, screenCapture, openCanvaModal, setCanvaOpenMo
                   <DrawIcon className='tools' onClick={() => handleToolChange('pencil')} disabled={tool === 'pencil'}/>
                   <img  className='tools' src={eraserIcon} onClick={() => handleToolChange('eraser')} disabled={tool === 'eraser'}/>
                   <UndoIcon className='tools' onClick={handleUndo}/>
-                  <Button onClick={handleClear} >Clear</Button>
+                  <Button  onClick={handleClear} >Clear</Button>
                   <RedoIcon className='tools' onClick={handleRedo}/>
                   <ZoomInIcon className='tools' onClick={() => zoomIn()}/>
                   <ZoomOutIcon className='tools' onClick={() => zoomOut()}/>
@@ -141,18 +145,18 @@ const CanvasEditor = ({handleSave, screenCapture, openCanvaModal, setCanvaOpenMo
             )}
           </TransformWrapper>
         </div>
-
         <form className='formArea'>
           <div>
             <p>Issue Type</p>
             <ToggleButtonGroup
               id="issueType"
               color="primary"
-              value={alignment}
+              value={issueType}
               exclusive
               onChange={handleChange}
               aria-label="Platform"
               style={{gap:"16px"}}
+              className='IssueGroup'
             >
               <ToggleButton className='issueBtn' value="Bugs">Bugs</ToggleButton>
               <ToggleButton className='issueBtn' value="Enhancements">Enhancements</ToggleButton>
@@ -169,6 +173,8 @@ const CanvasEditor = ({handleSave, screenCapture, openCanvaModal, setCanvaOpenMo
               variant="outlined"
               fullWidth
               size="small"
+              value={impact}
+              onChange={(e) => setImpact(e.target.value)}
             />
           </div>
           <div>
@@ -182,6 +188,8 @@ const CanvasEditor = ({handleSave, screenCapture, openCanvaModal, setCanvaOpenMo
               variant="outlined"
               fullWidth
               size="small"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
             />
           </div>
           <div>
@@ -197,6 +205,8 @@ const CanvasEditor = ({handleSave, screenCapture, openCanvaModal, setCanvaOpenMo
               variant="outlined"
               fullWidth
               size="small"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
             />
           </div>
           <div>
@@ -210,6 +220,8 @@ const CanvasEditor = ({handleSave, screenCapture, openCanvaModal, setCanvaOpenMo
               variant="outlined"
               fullWidth
               size="small"
+              value={section}
+              onChange={(e) => setSection(e.target.value)}
             >
               {options.map((option) => (
                 <MenuItem key={option.value} value={option.value}>
@@ -229,12 +241,15 @@ const CanvasEditor = ({handleSave, screenCapture, openCanvaModal, setCanvaOpenMo
               variant="outlined"
               fullWidth
               size="small"
-            >
+              value={subSection}
+              onChange={(e) => setSubSection(e.target.value)}>
+
               {options.map((option) => (
                 <MenuItem key={option.value} value={option.value}>
                   {option.label}
                 </MenuItem>
               ))}
+
             </TextField> 
           </div>
           <div style={{display:"flex", gap:"8px"}}>
@@ -247,7 +262,6 @@ const CanvasEditor = ({handleSave, screenCapture, openCanvaModal, setCanvaOpenMo
             </Button>
           </div>
         </form> 
-
       </div>
     </Modal>
   );
