@@ -1,7 +1,6 @@
 import React,{useEffect, useState} from 'react';
-import { useScreenshot } from "use-screenshot-hook";
 import { SnackbarProvider, MaterialDesignContent, enqueueSnackbar } from 'notistack';
-
+import html2canvas from 'html2canvas';
 // import ScreenShot from './Components/ScreenShot';
 import { ScreenCapture } from 'react-screen-capture';
 import Welcome from './Components/Welcome/Welcome';
@@ -15,7 +14,6 @@ const App = () => {
   const [screenCaptured, setscreenCaptured] = useState(false);
   const [openCanvaModal, setopenCanvaModal] = useState(false);
   const [openSSModal, setopenSSModal] = useState(false);
-  const { image, takeScreenshot } = useScreenshot();
   const [FormSubmit, setFormSubmit] = useState(false);
   const handleScreenCapture = screenCapture => {
     setscreenshot({screenCapture});
@@ -34,9 +32,13 @@ const App = () => {
 	}));
 
   const handleFullScreenCapture = () => {
-    takeScreenshot().then((image) => {
-      setscreenshot({ screenCapture: image });
+    const screenshotTarget = document.body;
+
+    html2canvas(screenshotTarget).then((canvas) => {
+        const image = canvas.toDataURL("image/png");
+        setscreenshot({ screenCapture: image });
     });
+    
     setscreenCaptured(true);
     setopenSSModal(true);
     setType("shotTaken");

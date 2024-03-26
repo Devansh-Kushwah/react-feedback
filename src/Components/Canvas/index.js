@@ -8,7 +8,6 @@ import {
   ToggleButton,
   Button,
 } from "@mui/material";
-import { fabric } from 'fabric';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import './Canva.css';
