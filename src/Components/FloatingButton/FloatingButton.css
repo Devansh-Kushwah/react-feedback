@@ -1,0 +1,39 @@
+.floatingButton{
+  position: fixed;
+  bottom: 10%;
+  right: 5%;
+  background-color: #293264;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.FloatingIcon{
+  margin: 8px 0px 0px 0px;
+}
+
+.FloatingModal{
+  background-color: white;
+  color: black;
+  position: fixed;
+  bottom: 18%;
+  right: 7%;
+  width:300px;
+  padding: 0px 0px 16px 16px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+  @media (max-width: 768px) {
+    bottom: 18%;
+    right: 10%;
+    }
+}
+

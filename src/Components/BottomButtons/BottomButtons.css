@@ -1,0 +1,68 @@
+
+
+.bada{
+  position: fixed;
+  bottom: 5%;
+  width: 100%;
+  height: auto;
+}
+.BottomButtons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    padding: 8px;
+    background-color: #293264;
+    border-radius: 8px;
+    width: 280px;
+    color: white;
+    gap:4px;
+
+    .btn-texts{
+      background-color: rgba(96, 102, 141, 0.8);
+      padding: 4px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    .btn-red{
+      background-color: rgb(167, 10, 10);
+      padding: 4px;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 25px;
+      height: 25px;
+    }
+
+    .btn-green{
+      background-color: rgb(41, 118, 41);
+      padding: 4px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+}
+
+
+#bg2{
+  width: 200px;
+}
+
+.SSModal{
+  width: 80%;
+  margin: 0 auto;
+  background-color: transparent !important;
+  /* box-shadow: none !important; */
+  
+  .css-1t1j96h-MuiPaper-root-MuiDialog-paper{
+    max-width: none !important;
+    max-height: none !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+}
